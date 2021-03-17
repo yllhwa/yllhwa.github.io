@@ -1,22 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://blog.yllhwa.com</id>
-    <title>yllhwa</title>
-    <updated>2021-03-17T15:04:59.475Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://blog.yllhwa.com"/>
-    <link rel="self" href="https://blog.yllhwa.com/atom.xml"/>
-    <subtitle>君子不器</subtitle>
-    <logo>https://blog.yllhwa.com/images/avatar.png</logo>
-    <icon>https://blog.yllhwa.com/favicon.ico</icon>
-    <rights>All rights reserved 2021, yllhwa</rights>
-    <entry>
-        <title type="html"><![CDATA[哔咔漫画签名校验去除]]></title>
-        <id>https://blog.yllhwa.com/post/bi-ka-man-hua-qian-ming-xiao-yan-qu-chu/</id>
-        <link href="https://blog.yllhwa.com/post/bi-ka-man-hua-qian-ming-xiao-yan-qu-chu/">
-        </link>
-        <updated>2021-03-17T15:01:34.000Z</updated>
-        <content type="html"><![CDATA[<p>使用工具：<br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>哔咔漫画签名校验去除 | yllhwa</title>
+<meta name="description" content="君子不器">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://blog.yllhwa.com/favicon.ico?v=1615993451102">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.yllhwa.com/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://blog.yllhwa.com">yllhwa</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>哔咔漫画签名校验去除</h1>
+            <p class="article-meta">
+              2021-03-17
+              
+            </p>
+            
+            <div class="post-content">
+              <p>使用工具：<br>
 1.MT管理器(付费版)<br>
 2.IDA Pro<br>
 3.WinHex</p>
@@ -148,6 +220,88 @@ CBNZ跳转指令对应的HEX机器码是B9。</p>
 接下来对<code>getStringFromNative</code>,<code>getStringSigFromNative</code>两个函数进行相似的操作即可(修改BEQ为BNE)</p>
 <p>接下来把修改后的so文件传回手机，用MT管理器替换apk包中的即可。我删除了除armeabi-v7a的文件夹，再将so放入其中。<br>
 再次打包安装可以发现已经可以正常使用app，至此签名校验去除完成。</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://blog.yllhwa.com/images/avatar.png?v=1615993451102" class="no-responsive avatar">
+    <div class="text-muted">君子不器</div>
+    <div class="social-container">
+      
+        
+          <a href="https://github.com/yllhwa" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://blog.yllhwa.com/post/bi-ka-man-hua-qian-ming-xiao-yan-qu-chu/">哔咔漫画签名校验去除</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://blog.yllhwa.com/post/about/">关于</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/yllhwa" target="_blank">yllhwa</a> | <a class="rss" href="https://blog.yllhwa.com/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>
