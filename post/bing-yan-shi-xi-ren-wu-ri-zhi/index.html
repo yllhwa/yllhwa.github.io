@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>yllhwa</title>
+<title>冰岩实习任务日志 | yllhwa</title>
 
 <link rel="shortcut icon" href="https://blog.yllhwa.com/favicon.ico?v=1616250352463">
 
@@ -37,11 +37,11 @@
     </script>
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
 <body>
 <div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -97,19 +97,46 @@
     </div>
 </nav>
 
-        <div class="post-container">
-            <div class="post-detail gt-bg-theme-color-first">
-                <article class="gt-post-content">
-                    <h2 class="post-title">标签</h2>
-        <div class="tags-container">
-            
-                <a class="tag gt-c-content-color-first gt-a-link"
-                   href="https://blog.yllhwa.com/tag/30420ZGQn7/">#安卓逆向</a>
-            
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    冰岩实习任务日志
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-03-20 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <h1 id="2021320">2021.3.20</h1>
+<p>今天选择了做”树洞“的实习任务。之前其实就有想法做一个了，因为现在还在协助管理着高中的一个类似树洞的公众号。<br>
+今天初步完成了阶段一和二的内容，实现了邮箱鉴权和token机制。<br>
+邮箱验证码采用redis存储并设置失效时长来实现。随机生成使用uuid1的后6位。<br>
+token机制采用的是给用户id签名后当作token，同时设置了有效时长。需要鉴权的api(大部分)用修饰器修饰，先鉴权，故安全性应该尚可。目前获取用户id之类有辨识性的内容的接口甚至还没做，所以匿名性应该也可以。<br>
+数据库设计花了最多的时间，虽然现在还晕乎乎的但是好歹能用了，实现了主要的接口，接口文档也写出来了。<br>
+明天预计先规范一下今天的代码，实在是有点乱。</p>
+
+                </div>
+            </article>
         </div>
-    </article>
-</div>
-</div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://blog.yllhwa.com/post/bi-ka-man-hua-qian-ming-xiao-yan-qu-chu/" class="post-title gt-a-link">
+                    哔咔漫画签名校验去除
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
         <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">君子不器</div>
     <div class="social-container">
