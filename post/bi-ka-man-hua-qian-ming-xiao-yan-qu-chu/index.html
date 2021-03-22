@@ -6,10 +6,10 @@
 
 <title>哔咔漫画签名校验去除 | yllhwa</title>
 
-<link rel="shortcut icon" href="https://blog.yllhwa.com/favicon.ico?v=1616423723618">
+<link rel="shortcut icon" href="http://blog.yllhwa.com/favicon.ico?v=1616423769529">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://blog.yllhwa.com/styles/main.css">
+<link rel="stylesheet" href="http://blog.yllhwa.com/styles/main.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
 
 <script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
@@ -89,7 +89,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616423723618" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1616423769529" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -108,7 +108,7 @@
                         · 2021-03-17 ·
                     </time>
                     
-                        <a href="https://blog.yllhwa.com/tag/30420ZGQn7/" class="post-tags">
+                        <a href="http://blog.yllhwa.com/tag/30420ZGQn7/" class="post-tags">
                             # 安卓逆向
                         </a>
                     
@@ -123,7 +123,7 @@
 使用MT管理器的去除签名校验功能后安装，依然闪退。同时注意到<code>lib</code>文件夹中唯一的一个so文件<code>libJniTest.so</code>。猜测是存在so签名校验。</p>
 <p>使用MT管理器反编译<code>class.dex</code>，搜索<code>native</code>，找到属于程序的代码(<code>com.picacomic.fregata</code>)。<br>
 发现方法<code>getStringComFromNative()</code>、<code>getStringConFromNative()</code>和<code>getStringSigFromNative()</code>，进一步验证猜想。<br>
-<img src="https://blog.yllhwa.com/post-images/1615993394415.jpg" alt="" loading="lazy"></p>
+<img src="http://blog.yllhwa.com/post-images/1615993394415.jpg" alt="" loading="lazy"></p>
 <p>发现这些方法都存在于MyApplication中，于是进入MyApplication，代码量不多，反编译之(转成java)。容易看到两个关键的方法：</p>
 <pre><code class="language-java">    public boolean bz()
     {
@@ -152,7 +152,7 @@
     }
 </code></pre>
 <p>其中c()方法似乎是返回拼接的字符串，而bz()方法则返回了一个<code>bool</code>变量。猜测bz()方法为签名效验所依赖的方法，于是搜索bz()方法被调用的地方。<br>
-<img src="https://blog.yllhwa.com/post-images/1615993412806.jpg" alt="" loading="lazy"><br>
+<img src="http://blog.yllhwa.com/post-images/1615993412806.jpg" alt="" loading="lazy"><br>
 可以看到<code>SplashActivity</code>中的bZ()方法是重新定义的(.method为定义方法)，故重点关注<code>g</code>中的调用。反编译之，代码量有点大，搜索bz迅速定位到关键方法ar()。</p>
 <pre><code class="language-java">    public static boolean ar(Context context)
     {
@@ -195,7 +195,7 @@
 <p>修改完成后app已经不闪退了，但是发现在断网情况下不闪退，而联网进行操作即会闪退，推测服务端还对签名进行了校验，故重心转移到<code>libJniTest.so</code>上。为了方便，选用通用性最好的<code>armeabi-v7a</code>文件夹中的so文件。(不同的文件夹是给不同架构的平台编译的，其中armeabi-v7a最为通用)</p>
 <p>丢入IDA中分析。<br>
 查看<code>Exports</code>窗口容易发现刚才看到的几个关键函数。<br>
-<img src="https://blog.yllhwa.com/post-images/1615993429755.jpg" alt="" loading="lazy"></p>
+<img src="http://blog.yllhwa.com/post-images/1615993429755.jpg" alt="" loading="lazy"></p>
 <p>注意到<code>getStringComFromNative</code>函数刚才在apk中我们已经过了，故首先关注<code>getStringConFromNative</code>函数。<br>
 F5反编译之，得到伪C代码。我的重点不在逆向出算法，故关注点放在关键的判断上。</p>
 <pre><code class="language-c">if ( j_genKey10(a1, a2) )
@@ -238,11 +238,11 @@ CBNZ跳转指令对应的HEX机器码是B9。</p>
 </blockquote>
 <p>只要把CBZ改为CBNZ即可。<br>
 点击view-&gt;Open subviews-&gt;Hex dump，已经选中了关键的地方。<br>
-<img src="https://blog.yllhwa.com/post-images/1615993441157.jpg" alt="" loading="lazy"><br>
+<img src="http://blog.yllhwa.com/post-images/1615993441157.jpg" alt="" loading="lazy"><br>
 使用WinHex搜索前后随意一段定位，将B1改为B9即可。<br>
 注：搜索16进制而不是文本，修改时用方向键定位到目标位置直接输入值即可修改对应的值。</p>
 <p>回到IDA重新打开可以看到已经修改成功了。<br>
-<img src="https://blog.yllhwa.com/post-images/1615993447117.jpg" alt="" loading="lazy"><br>
+<img src="http://blog.yllhwa.com/post-images/1615993447117.jpg" alt="" loading="lazy"><br>
 接下来对<code>getStringFromNative</code>,<code>getStringSigFromNative</code>两个函数进行相似的操作即可(修改BEQ为BNE)</p>
 <p>接下来把修改后的so文件传回手机，用MT管理器替换apk包中的即可。我删除了除armeabi-v7a的文件夹，再将so放入其中。<br>
 再次打包安装可以发现已经可以正常使用app，至此签名校验去除完成。</p>
@@ -285,7 +285,7 @@ CBNZ跳转指令对应的HEX机器码是B9。</p>
     </div>
     <div>
         Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://blog.yllhwa.com/atom.xml" target="_blank">RSS</a></a>
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="http://blog.yllhwa.com/atom.xml" target="_blank">RSS</a></a>
     </div>
 </div>
 
