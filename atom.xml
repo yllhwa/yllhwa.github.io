@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://blog.yllhwa.com</id>
     <title>yllhwa</title>
-    <updated>2021-03-23T09:32:14.918Z</updated>
+    <updated>2021-03-24T13:22:29.536Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://blog.yllhwa.com"/>
     <link rel="self" href="http://blog.yllhwa.com/atom.xml"/>
@@ -51,6 +51,11 @@ C收到后解密树洞内容，准备加入到区块链。<br>
 <li>区块链相关实现。虽然我希望选择pos等共识机制，但是看起来共识机制比起密码学还难得多，我计划先采用pow共识机制实现。<br>
 我感觉这是开创性的，虽然多数人的正义到底是不是正义还是一个问题，但是至少理论上可以实现这个正义。</li>
 </ol>
+<h1 id="2021324">2021.3.24</h1>
+<p>与出题人沟通后发现我的思路完全不对（<br>
+放弃阶段五了，想了三天一点进展都没有，已经崩溃了😂<br>
+今天主要是对代码进行重构，整理了一下，现在应该还是比较清晰了吧。<br>
+明天应该主要还是重构，现在返回的数据貌似还不适合前端用。</p>
 ]]></content>
     </entry>
     <entry>
