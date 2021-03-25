@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://blog.yllhwa.com</id>
     <title>yllhwa</title>
-    <updated>2021-03-24T13:24:44.286Z</updated>
+    <updated>2021-03-25T14:24:45.830Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://blog.yllhwa.com"/>
     <link rel="self" href="http://blog.yllhwa.com/atom.xml"/>
@@ -56,6 +56,20 @@ C收到后解密树洞内容，准备加入到区块链。<br>
 放弃阶段五了，想了三天一点进展都没有，已经崩溃了😂<br>
 今天主要是对代码进行重构，整理了一下，现在应该还是比较清晰了吧。<br>
 明天应该主要还是重构，现在返回的数据貌似还不适合前端用。</p>
+<h1 id="2021325">2021.3.25</h1>
+<p>重构也差不多了吧，现在就简单的查漏补缺了。<br>
+测试全部再覆盖一遍，接口文档也得再写写。<br>
+今天发现一个安全问题</p>
+<pre><code class="language-python">post.author = encrypt_data(str(user_id) + &quot;|&quot; + str(post.id))
+</code></pre>
+<p>此处有一隐患，若数据库被脱，理论上攻击者只要用公钥穷举user_id+&quot;|&quot;+post.id产生一个表即可，而user_id是非常小且有规律的<br>
+改进方法是改成</p>
+<pre><code class="language-python">post.author = encrypt_data(str(user.mail) + &quot;|&quot; + str(post.id))
+</code></pre>
+<p>user.mail是经过一次RSA加密的，再来一次RSA加密<br>
+根据华科邮箱规定：“别名最小长度3位，最大长度13位，必须以英文字母开头，允许使用数字、下划线，大写字母会自动转为小写！ 输入的别名不能包含域名！”<br>
+即华科邮箱共有<code>175911106378280941798</code>种可能，经过估计，两次(mail字段也是使用RSA加密的)RSA计算在<code>5ms</code>左右，<br>
+即尝试爆破需要<code>175911106378280941798*5/1000/60/60/24/365</code>约为<code>27890522954</code>年，即便算力提升上亿倍，仍然可认为是安全的。</p>
 ]]></content>
     </entry>
     <entry>
