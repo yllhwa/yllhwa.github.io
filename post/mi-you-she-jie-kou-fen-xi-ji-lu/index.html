@@ -1,0 +1,297 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>米游社接口分析记录 | yllhwa</title>
+
+<link rel="shortcut icon" href="http://blog.yllhwa.com/favicon.ico?v=1616776351388">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="http://blog.yllhwa.com/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-192525739-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-192525739-1');
+    </script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            yllhwa
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1616776351388" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    米游社接口分析记录
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-03-26 ·
+                    </time>
+                    
+                        <a href="http://blog.yllhwa.com/tag/30420ZGQn7/" class="post-tags">
+                            # 安卓逆向
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>使用工具：<br>
+1.MT管理器(付费版)<br>
+2.IDA Pro<br>
+<strong>本次分析针对米游社app2.6.0版本</strong><br>
+学逆向的基础知识的时候一般都用的爆破的方法，无非改几个跳转和0x1,0x0而已，每次看到别人分析算法都非常羡慕。之前早有耳闻米游社api接口有一个经常变动的效验字段，所以今天就索性试了试。</p>
+<p>MT管理器提取安装包，没有加固。<br>
+点查看，粗略看了看，代码量挺大的，所以打算先定位到签到的activity。<br>
+用MT管理器的Activity记录功能，定位到签到的activity是<code>com.mihoyo.hyperion.web.MiHoYoWebActivity</code>(看起来并没有什么用)</p>
+<p>还是直接入手apk吧，用Dex编辑器++打开所有的dex(MultiDex)。<br>
+因为在网上有一些讨论，所以大概知道效验的字段叫<code>DS</code>，直接搜索。<br>
+找到809个结果，不过也没啥，明显<code>android.xxx</code>、<code>com.google.xxx</code>之类的应该没啥关系，直接看<code>com.mihoyo.xxx</code>的就行。不太清楚为啥MT管理器搜索代码的时候就不能全字匹配，不过也无所谓，人工全字匹配也罢。<br>
+简单的几次尝试可以发现找到了想要的东西(这名字取得也是非常文艺：达摩克里斯？)。<br>
+<img src="http://blog.yllhwa.com/post-images/1616774301088.jpg" alt="" loading="lazy"></p>
+<p>点进去反编译之。</p>
+<pre><code class="language-java">static
+{
+    System.loadLibrary(&quot;dddd&quot;);
+}
+public DamoclesInterceptor()
+{}
+private final native String a();
+private final native String a1();
+private final native String a11();
+private final native String a2();
+private final native String a22();
+private final native String a222(String str);
+@d
+public final native String a2222(@d String str);
+@d
+public e0 intercept(@d w.a aVar)
+{
+    RuntimeDirector runtimeDirector = m__m;
+    if(runtimeDirector == null || !runtimeDirector.isRedirect(0))
+    {
+        k0.e(aVar, &quot;chain&quot;);
+        return aVar.a(aVar.request().l().a(&quot;DS&quot;, a2222(AManager.INSTANCE.k2())).a());
+    }
+    return(e0) runtimeDirector.invocationDispatch(0, this, new Object[]
+    {
+        aVar
+    });
+}
+</code></pre>
+<p>有<code>loadLibrary</code>的<code>native</code>方法，看来等下得分析分析so文件。</p>
+<blockquote>
+<p>注：<code>loadLibrary</code>是读取lib文件夹下的libxxxx.so文件，是用c++之类的写的，叫做native编程。</p>
+</blockquote>
+<p>先稳一手，看下下面那一串方法，我不会安卓/java开发，不知道这个方法名字叫啥？e0后面又有intercept。干脆搜一下这个文件的名字<code>DamoclesInterceptor</code>看下调用的地方。</p>
+<p>除了定义的地方，有两个地方调用了。<br>
+<img src="http://blog.yllhwa.com/post-images/1616775094857.jpg" alt="" loading="lazy"></p>
+<p>下面那个我没看懂在干什么，看上面那个。<br>
+反编译后容易看到里面的关键代码：</p>
+<pre><code class="language-java">webViewJsCallbackBean.getData().  
+put(&quot;DS&quot;, new DamoclesInterceptor().a2222(AManager.INSTANCE.lk2()));
+</code></pre>
+<p>是在请求数据之类的？总之调用了DamoclesInterceptor()里面刚刚看到native的a2222()函数，传参是<code>AManager.INSTANCE.lk2()</code>先看下这个传参是何方神圣，翻到最上面看import，这个AManager是从<code>com.mihoyo.hyperion.manager</code>导入的。<br>
+浏览一下这个<code>AManage</code>的<code>IK2</code>方法，看到里面的内容我笑出了声，这一大堆数字看起来貌似在告诉我它就是关键要保护的东西。</p>
+<pre><code class="language-java">@d
+public final String lk2()
+{
+    int i;
+    RuntimeDirector runtimeDirector = m__m;
+    if(runtimeDirector != null &amp;&amp; runtimeDirector.isRedirect(1))
+    {
+        return(String) runtimeDirector.invocationDispatch(1, this, a.a);
+    }
+    int[] iArr = {
+        -120, -14348907, 192, -6561, 192, -1594323, -6561, 192, -14348907, -112, -100, 204, -120, 156, -1594323, 180, 174, -2187, -112, -98, -14348907, -2187, -19683, 168, 186, -100, -114, -2187, -108, -59049, 204, 156
+    };
+    StringBuilder sb = new StringBuilder();
+    ArrayList &lt; Number &gt; arrayList = new ArrayList &lt; &gt; (iArr.length);
+    for(int i2: iArr)
+    {
+        if(i2 &lt; 0)
+        {
+            double d = (double) 6;
+            i = ((double)(-i2)) &gt;= Math.pow(3.0 d, d) ? (int)(((Math.log(-((double) i2)) / Math.log(3.0 d)) - d) + ((double) 48)) : ~i2;
+        }
+        else
+        {
+            i = (i2 / 3) + 48;
+        }
+        arrayList.add(Integer.valueOf(i));
+    }
+    ArrayList arrayList2 = new ArrayList(y.a(arrayList, 10));
+    for(Number intValue: arrayList)
+    {
+        sb.append((char) intValue.intValue());
+        arrayList2.add(sb);
+    }
+    String sb2 = sb.toString();
+    k0.d(sb2, &quot;sb.toString()&quot;);
+    return sb2;
+}
+</code></pre>
+<p>不会java，用python照猫画虎写了个：</p>
+<pre><code class="language-python">from math import log
+iArr = [204, 180, -108, -122, -102, -118, -102, -114, -1594323, 162, -102, 174, -4782969, 210, 204, 222, -106, 204, 204, -6561, -531441, -122, 180, -6561, -59049, -108, -116, -120, 198, -104, -110, -177147]
+arrayList = []
+sb = &quot;&quot;
+for i2 in iArr:
+    if i2 &lt; 0:
+        d = 6
+        if - i2 &gt;= 3 ** 6:
+            i = int((log(float(-i2)) / log(3.0) - d) + float(48))
+        else:
+            i = ~i2
+    else:
+        i = (i2 // 3) + 48
+    arrayList.append(chr(i))
+print(&quot;&quot;.join(arrayList))
+</code></pre>
+<p>运行之，得到结果<code>tlkyeueq7fej8vtzitt26yl24kswrgm5</code>。<br>
+用ida反编译了下so文件发现这就是加密DS的<code>salt</code>。懒得分析后面的了，直接用别人现成的算了(ps:现成指的是网上看到的用的是web的salt，我改成安卓的salt)。</p>
+<pre><code class="language-python">def get_ds():
+        n = 'tlkyeueq7fej8vtzitt26yl24kswrgm5'
+        #n = 'hfiki8qvnuai95p2845psdo9ydcmsrc0' #这是web端的
+        i = str(int(time.time()))
+        r = ''.join(random.sample(string.ascii_lowercase + string.digits, 6))
+        c = hexdigest('salt=' + n + '&amp;t=' + i + '&amp;r=' + r)
+        return '{},{},{}'.format(i, r, c)
+</code></pre>
+<p>至于抓包啥啥的我就懒得搞了，知道这个DS怎么来就行了，万一实在没办法了就跟进ida看下吧，那个活儿更累嘞。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="http://blog.yllhwa.com/post/bing-yan-shi-xi-ren-wu-ri-zhi/" class="post-title gt-a-link">
+                    冰岩实习任务日志
+                </a>
+            </div>
+        
+
+        
+
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">君子不器</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/yllhwa" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/yllhwa" target="_blank">yllhwa</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="http://blog.yllhwa.com/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
