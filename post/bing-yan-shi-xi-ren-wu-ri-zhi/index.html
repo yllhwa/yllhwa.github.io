@@ -6,7 +6,7 @@
 
 <title>冰岩实习任务日志 | yllhwa</title>
 
-<link rel="shortcut icon" href="http://blog.yllhwa.com/favicon.ico?v=1616682282645">
+<link rel="shortcut icon" href="http://blog.yllhwa.com/favicon.ico?v=1616757299960">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="http://blog.yllhwa.com/styles/main.css">
@@ -89,7 +89,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1616682282645" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1616757299960" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -164,6 +164,23 @@ C收到后解密树洞内容，准备加入到区块链。<br>
 根据华科邮箱规定：“别名最小长度3位，最大长度13位，必须以英文字母开头，允许使用数字、下划线，大写字母会自动转为小写！ 输入的别名不能包含域名！”<br>
 即华科邮箱共有<code>175911106378280941798</code>种可能，经过估计，两次(mail字段也是使用RSA加密的)RSA计算在<code>5ms</code>左右，<br>
 即尝试爆破需要<code>175911106378280941798*5/1000/60/60/24/365</code>约为<code>27890522954</code>年，即便算力提升上亿倍，仍然可认为是安全的。</p>
+<h1 id="2021326">2021.3.26</h1>
+<p>今天是实习任务的最后一天了，做了一次完完全全的测试，还是改掉了不少小bug。<br>
+另外发现选择的库实现的RSA算法是自带随机性的，昨天多虑了。<br>
+最后对学到的知识做个总结吧，之前的日志主要是记录的问题。</p>
+<ol>
+<li>第一次使用flask的蓝图。用起来貌似没有太大困难。</li>
+<li>总算把Flask-SQLAlchemy搞得清楚一点了，之前一直连数据库都不敢用，自己用json存储数据。</li>
+<li>第一次手写装饰器。虽然深层次的原理还没来得及去研究。</li>
+<li>第一次写接口文档。要是我要开发前端的话肯定清晰得多。</li>
+<li>学了不少密码学的知识。包括RSA、秘密共享之类的。虽然区块链没有做出来，但是看了不少的论文，对各种算法的性质大概有了一些了解？顺便还看了一点洋葱网络的实现。</li>
+<li>对照着github上的其他项目，规范了一下代码结构。之前一直不太清楚写flask怎么组织起来好看一点。</li>
+<li>token鉴权机制、redis的使用等细枝末节的东西。<br>
+话说其实前两天就把前四个阶段大体做完了，然后卡了三天在区块链上面，最后两天才用来重构、测试之类的。主要有点急于求成了，之前写的时候就该规范一点的，边重构边开发，边测试边开发(测试驱动开发?)。</li>
+</ol>
+<p>顺便来张最近7天的码代码统计(<br>
+<img src="http://blog.yllhwa.com/post-images/1616757182288.png" alt="" loading="lazy"><br>
+<img src="http://blog.yllhwa.com/post-images/1616757275117.png" alt="" loading="lazy"></p>
 
                 </div>
             </article>
