@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://blog.yllhwa.com</id>
     <title>yllhwa</title>
-    <updated>2021-03-31T08:30:31.663Z</updated>
+    <updated>2021-06-11T00:56:07.980Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://blog.yllhwa.com"/>
     <link rel="self" href="http://blog.yllhwa.com/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>http://blog.yllhwa.com/images/avatar.png</logo>
     <icon>http://blog.yllhwa.com/favicon.ico</icon>
     <rights>All rights reserved 2021, yllhwa</rights>
+    <entry>
+        <title type="html"><![CDATA[奇幻idea]]></title>
+        <id>http://blog.yllhwa.com/post/qi-huan-idea/</id>
+        <link href="http://blog.yllhwa.com/post/qi-huan-idea/">
+        </link>
+        <updated>2021-06-11T00:43:28.000Z</updated>
+        <content type="html"><![CDATA[<p>大概有点天马行空+不成熟。就是些idea，写下来估计就不会想了(</p>
+<h1 id="ebookshelf">eBookShelf</h1>
+<p>想做个电子书架，类似于经典图书管理系统？既可以展示又可以方便出二手(😂)。<br>
+问题：</p>
+<ol>
+<li>没找到什么方便稳定的ISBN查询书籍详细信息的接口。豆瓣之前把api接口直接关了是我没想到的。而且豆瓣搜索页的反爬措施有丶厉害，估计得是js逆向好材料，我水平不够又不想用无头浏览器之类的来降低性能，故搁置之。</li>
+<li>前端太拉啦，写出来估计很丑，失去了展示的意义。</li>
+</ol>
+<h1 id="英语听力材料切分">英语听力材料切分</h1>
+<p>虽然现在根本不听，但是从高中就想做了，因为英语老师偶尔会叫我做这种低技术力工作。<br>
+问题：</p>
+<ol>
+<li>没开做过，暂时没遇到啥问题。</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[米游社接口分析记录]]></title>
         <id>http://blog.yllhwa.com/post/mi-you-she-jie-kou-fen-xi-ji-lu/</id>
