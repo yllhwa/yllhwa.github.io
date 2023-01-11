@@ -914,7 +914,7 @@ vendors:
   # For example:
   # custom_cdn_url: https://cdn.jsdelivr.net/npm/${npm_name}@${version}/${minified}
   # custom_cdn_url: https://cdnjs.cloudflare.com/ajax/libs/${cdnjs_name}/${version}/${cdnjs_file}
-  custom_cdn_url: http://cdn.staticfile.org/${npm_name}/${version}/${cdnjs_file}
+  custom_cdn_url: https://cdn.staticfile.org/${npm_name}/${version}/${cdnjs_file}
   fontawesome: https://cdn.staticfile.org/font-awesome/6.2.1/css/all.min.css
 
 # Assets
