@@ -96,7 +96,6 @@ open_graph:
 # External url should start with http:// or https://
 menu:
   首页: / || fa fa-home
-  归档: /archives/ || fa fa-archive
   分类: /categories/ || fa fa-th
   标签: /tags/ || fa fa-tags
   关于: /about/ || fa fa-user
