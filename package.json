@@ -27,7 +27,7 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "hexo-theme-next": "^8.17.1",
-    "hexo-util": "^3.0.1",
+    "hexo-util": "^3.1.0",
     "js-yaml": "^4.1.0"
   }
 }
