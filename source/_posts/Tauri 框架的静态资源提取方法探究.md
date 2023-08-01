@@ -42,23 +42,23 @@ brotli::BrotliCompress(&mut input, &mut out_file, &Self::compression_settings())
 
 使用 IDA 打开一个 Tauri 程序。由于去除了符号，代码的可读性很差。我们尝试从字符串入手，查找`index.html`。
 
-{% asset_img image-20230509134253373.png image-20230509134253373.png %}
+![](Tauri 框架的静态资源提取方法探究/image-20230509134253373.png)
 
 进入第一个出现的位置，查看引用。在其第二个引用处我们可以发现端倪。
 
-{% asset_img image-20230509134409750.png image-20230509134409750.png %}
+![](Tauri 框架的静态资源提取方法探究/image-20230509134409750.png)
 
 此处看起来很像是一个包含文件名和文件位置的表。
 
-{% asset_img image-20230509134430026.png image-20230509134430026.png %}
+![](Tauri 框架的静态资源提取方法探究/image-20230509134430026.png)
 
 稍加分析我们即可得知这个表的结构如图：
 
-{% asset_img image-20230509134734454.png image-20230509134734454.png %}
+![](Tauri 框架的静态资源提取方法探究/image-20230509134734454.png)
 
 将对应文件内容的部分 dump 出来进行 brotli 解压缩即可。
 
-{% asset_img image-20230509134819388.png image-20230509134819388.png %}
+![](Tauri 框架的静态资源提取方法探究/image-20230509134819388.png)
 
 一个可用的解压 python 脚本如下：
 

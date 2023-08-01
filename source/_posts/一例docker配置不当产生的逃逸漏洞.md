@@ -45,4 +45,4 @@ tags: [逆向, docker]
 
 过一会儿就能收到反弹 shell 了，粗略看了看，也就是一个阿里云的主机，可以看到各个评测的答案和代码，还有一些敏感信息按下不表。
 
-{% asset_img educode_1.png educode_1.png %}
+![](一例docker配置不当产生的逃逸漏洞/educode_1.png)
