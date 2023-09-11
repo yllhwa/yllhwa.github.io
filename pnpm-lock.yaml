@@ -48,8 +48,8 @@ dependencies:
     specifier: ^1.0.0
     version: 1.0.0
   hexo-theme-next:
-    specifier: ^8.18.0
-    version: 8.18.0
+    specifier: ^8.18.1
+    version: 8.18.1
   hexo-util:
     specifier: ^3.1.0
     version: 3.1.0
@@ -806,8 +806,8 @@ packages:
     resolution: {integrity: sha512-bWQJWMqQI78wWiJPQZq5pJBH20TM442ShCaHGRetuEgMraxH0OKxB3NTupJzNEkzEk8DV2yrdizkXdKN6i501A==}
     dev: false
 
-  /hexo-theme-next@8.18.0:
-    resolution: {integrity: sha512-J6LHfap6o0RSUrUeQfl5YHUHJxsOi1jqXDbmi9blLTSYOPvo6AONhfMfaTY3aJ3sBGpK+aOVLbZA0/ZBAtb/Tw==}
+  /hexo-theme-next@8.18.1:
+    resolution: {integrity: sha512-cfj4FKXJZjFmWQ5hX1yQHYCu+qzRce/hxw3403jCCnQHkfcTSoT0I7OJCWktCydJ2p43JSKiOpL5n6N4yRggZw==}
     dev: false
 
   /hexo-util@2.7.0:
