@@ -3,6 +3,7 @@ title: 一种绕过 Windows WebView DevTools 限制的方法
 date: 2023-06-01 11:43:49
 categories: 逆向
 tags: [逆向]
+url: /2023/06/01/一种绕过Windows-WebView-DevTools限制的方法/
 ---
 
 继上篇文章简述了如何从 Tauri 打包的程序中提取出静态资源后，我继续对一些 Tauri 程序进行了逆向。但是每次提取、修改、重打包非常的繁琐，我还是觉得 DevTools 比较好用。但是这类 Webview 程序一般都会禁用 DevTools，如何开启成了一个问题。

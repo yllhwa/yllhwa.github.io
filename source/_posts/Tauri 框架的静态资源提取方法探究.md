@@ -3,6 +3,7 @@ title: Tauri 框架的静态资源提取方法探究
 date: 2023-05-09 12:31:00
 categories: 逆向
 tags: [Rust, 逆向]
+url: /2023/05/09/Tauri 框架的静态资源提取方法探究/
 ---
 
 Tauri 是一个帮助开发人员使用现有的任何前端框架制作应用程序的工具包，其核心由 Rust 驱动。与 Electron 相比，Tauri 复用了系统的 Webview，使得包体积很小。

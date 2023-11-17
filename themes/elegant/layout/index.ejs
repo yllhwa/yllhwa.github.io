@@ -1,0 +1,37 @@
+<section class="posts">
+  <% 
+    const groupedPosts = {};
+
+    page.posts.forEach(post => {
+      const year = new Date(post.date).getFullYear();
+      if (groupedPosts[year]) {
+        groupedPosts[year].push(post);
+      } else {
+        groupedPosts[year] = [post];
+      }
+    });
+
+    // 按照年份倒序排列
+    const years = Object.keys(groupedPosts).sort((a, b) => b - a);
+
+    for (const year of years) { 
+    %>
+    <div class="post-year-info">
+        <h2 class="post-year"><%= year %></h2>
+        <div class="post-count-year">共计 <%= groupedPosts[year].length %> 篇文章</div>
+    </div>
+    
+    <%
+      const posts = groupedPosts[year];
+      for (const post of posts) {
+    %>
+    <article class="post">
+        <div class="post-title">
+            <a class="post-title-link" href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </div>
+        <div class="post-meta">
+            <span class="post-time"><%- date(post.date, "MM-DD") %></span>
+        </div>
+    </article>
+  <% }} %>
+</section>

@@ -1,0 +1,19 @@
+<header class="blog-header">
+  <h1 class="site-title">yllhwa's blog</h1>
+  <p class="site-subtitle" itemprop="description">🎯 Focusing</p>
+  <nav class="blog-nav">
+    <ul>
+      <li>
+        <% if(is_current("/")) { %> 文章 <% } else { %>
+        <a href="/"> 文章 </a>
+        <% } %>
+      </li>
+      <li>
+        <% if(is_current("about")) { %> 关于 <% } else { %>
+        <a href="/about"> 关于 </a>
+        <% } %>
+      </li>
+      <li><a href="/atom.xml">RSS</a></li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,213 @@
+@container-width: 60rem;
+
+.blog-header {
+  max-width: @container-width;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  .site-title {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .site-subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #536471;
+  }
+}
+
+.blog-nav {
+  max-width: @container-width;
+  margin: 1rem auto;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+      font-size: 1.125rem;
+    }
+  }
+  a {
+    color: #0064c1;
+    text-decoration: none;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.posts {
+  max-width: @container-width;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+  .post {
+    margin-bottom: 1rem;
+
+    display: flex;
+
+    flex-direction: column-reverse;
+    @media (min-width: @container-width) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .post-title {
+      margin: 0;
+      font-size: 1.125rem;
+    }
+    .post-meta {
+      .post-time {
+        margin: 0;
+        font-size: 1rem;
+        color: #536471;
+      }
+    }
+
+    .post-content {
+      margin: 0;
+      font-size: 1.125rem;
+      color: #536471;
+    }
+  }
+  .post-year-info {
+    margin: 1rem 0;
+    .post-year {
+      margin: 0;
+    }
+    .post-count-year {
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+  .post-count {
+    margin: 0;
+    font-size: 1rem;
+    color: #536471;
+  }
+  a {
+    color: #0064c1;
+    text-decoration: none;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+body {
+  margin: 1.2rem;
+  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica,
+    "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+footer {
+  max-width: @container-width;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  .footer-text {
+    margin: 0;
+    font-size: 1rem;
+    color: #536471;
+    text-align: center;
+  }
+  .footer-contact {
+    margin: 0;
+    font-size: 1rem;
+    color: #536471;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .footer-contact-item {
+      margin: 0;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      color: #536471;
+    }
+    img {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+  #github_link {
+    color: #0064c1;
+    text-decoration: none;
+    &::before {
+      content: "";
+      display: inline-block;
+      position: static;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 1rem;
+      width: 1rem;
+      margin: 0 0.125rem -0.125rem 0.125rem;
+      opacity: 0.8;
+      background-image: url(/img/github.svg);
+    }
+  }
+}
+
+.post-container {
+  max-width: @container-width;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+
+  .post-title {
+    margin: 0;
+  }
+  .post-content {
+    margin: 0;
+    font-size: 1.125rem;
+    img {
+      max-width: 100%;
+      // 居中
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  code:not([class]) {
+    background: #efefef;
+    color: #000;
+    padding: 2px 4px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    width: 100%;
+  }
+
+  a {
+    color: #0064c1;
+    text-decoration: none;
+    &:hover {
+      // 红色下划线
+      text-decoration: underline;
+    }
+  }
+
+  a[href^="http"] {
+    &::after {
+      content: "";
+      display: inline-block;
+      position: static;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 0.85em;
+      width: 0.85em;
+      margin: 0 0 2px 3px;
+      opacity: 0.8;
+      background-image: url(/img/link.svg);
+    }
+  }
+}
+
+/* 引用样式 */
+blockquote {
+  background: #efefef;
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}

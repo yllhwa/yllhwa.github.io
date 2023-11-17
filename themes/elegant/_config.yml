@@ -1,0 +1,6 @@
+less:
+  paths: ["source/css/**"]
+  options:
+
+avatar:
+  url: /images/logo.png

@@ -3,6 +3,7 @@ title: 为 Android 平台编译 eBPF 程序
 date: 2022-06-15 10:23:39
 categories: 逆向
 tags: [安卓, 逆向, eBPF]
+url: /2022/06/15/为Android平台编译eBPF程序/
 ---
 
 ### 背景

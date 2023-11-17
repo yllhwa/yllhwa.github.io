@@ -1,0 +1,12 @@
+<div class="post-container">
+  <h1 class="post-title">
+    <%= page.title %>
+  </h1>
+  <div class="blog-meta">
+    <span class="blog-time">📅 <%- date(page.date, "YYYY-MM-DD" ) %></span>
+  </div>
+  <p>
+    <%= page.tip %>
+  </p>
+  <article class="post-content"><%- page.content %></article>
+</div>
