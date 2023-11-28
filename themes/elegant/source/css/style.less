@@ -162,12 +162,19 @@ footer {
   .post-content {
     margin: 0;
     font-size: 1.125rem;
+    // 行间距
+    line-height: 1.8;
     img {
       max-width: 100%;
       // 居中
       display: block;
       margin: 0 auto;
     }
+  }
+
+  blockquote {
+    white-space: normal;
+    word-break: break-all;
   }
 
   code:not([class]) {
@@ -177,11 +184,17 @@ footer {
     border-radius: 6px;
     font-size: 0.85em;
     width: 100%;
+
+    white-space: normal;
+    word-break: break-all;
   }
 
   a {
     color: #0064c1;
     text-decoration: none;
+
+    white-space: normal;
+    word-break: break-all;
     &:hover {
       // 红色下划线
       text-decoration: underline;
