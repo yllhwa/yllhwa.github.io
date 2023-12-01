@@ -13,6 +13,11 @@
         <a href="/about"> 关于 </a>
         <% } %>
       </li>
+      <li>
+        <% if(is_current("friends")) { %> 友链 <% } else { %>
+        <a href="/friends"> 友链 </a>
+        <% } %>
+      </li>
       <li><a href="/atom.xml">RSS</a></li>
     </ul>
   </nav>
