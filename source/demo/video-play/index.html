@@ -11,6 +11,7 @@
         href="https://cdn.jsdelivr.net/npm/@douglassllc/videojs-framebyframe@1.1.1/videojs.framebyframe.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/video.js@v7.10.1/dist/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-landscape-fullscreen@11.1111.0/dist/videojs-landscape-fullscreen.min.js"></script>
     <!-- 样式覆盖 -->
     <style>
         /* 保持 control 可见 */
@@ -189,6 +190,7 @@
                         this.src(source);
                         this.autoplay();
                     });
+                    Player.landscapeFullscreen();
                 }
             });
         });
