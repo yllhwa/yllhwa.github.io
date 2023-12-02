@@ -22,8 +22,6 @@
             transition-duration: 0s !important;
         }
     </style>
-    <!-- <script
-        src="https://cdn.jsdelivr.net/npm/@douglassllc/videojs-framebyframe@1.1.1/videojs.framebyframe.min.js"></script> -->
     <script>
         // videojs-framebyframe-plugin
         var VjsButton = videojs.getComponent('Button');
@@ -84,7 +82,7 @@
     </div>
     <div style="width: 100%;height: 100%;">
         <video id="video" class="video-js  vjs-default-skin" controls="controls" autoplay="autoplay" preload="metadata"
-            muted="muted" x5-playsinline="" playsinline="" webkit-playsinline="" style="object-fit: fill;">视频</video>
+            muted="muted" x5-playsinline="" playsinline="" webkit-playsinline="" style="object-fit: contain;">视频</video>
     </div>
 
     <script type="text/javascript">
@@ -142,8 +140,6 @@
                         muted: false,
                         controls: true,
                         inactivityTimeout: 0,
-                        // height: 320,
-                        // width: 170,
                         loop: false,
                         fluid: true,
                         plugins: {
