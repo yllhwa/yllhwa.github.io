@@ -10,7 +10,7 @@
     "pack": "node pack-public.js"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.0.0"
   },
   "dependencies": {
     "archiver": "^6.0.1",
@@ -20,16 +20,12 @@
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^3.0.0",
-    "hexo-generator-searchdb": "^1.4.1",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-less": "^4.0.0",
     "hexo-renderer-marked": "^6.1.1",
-    "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-landscape": "^1.0.0",
-    "hexo-theme-next": "^8.18.1",
     "hexo-util": "^3.1.0",
     "js-yaml": "^4.1.0"
   }

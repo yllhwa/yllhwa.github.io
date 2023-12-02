@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   archiver:
     specifier: ^6.0.1
@@ -26,9 +22,6 @@ dependencies:
   hexo-generator-index:
     specifier: ^3.0.0
     version: 3.0.0
-  hexo-generator-searchdb:
-    specifier: ^1.4.1
-    version: 1.4.1
   hexo-generator-sitemap:
     specifier: ^3.0.1
     version: 3.0.1
@@ -44,18 +37,9 @@ dependencies:
   hexo-renderer-marked:
     specifier: ^6.1.1
     version: 6.1.1
-  hexo-renderer-stylus:
-    specifier: ^3.0.0
-    version: 3.0.0
   hexo-server:
     specifier: ^3.0.0
     version: 3.0.0
-  hexo-theme-landscape:
-    specifier: ^1.0.0
-    version: 1.0.0
-  hexo-theme-next:
-    specifier: ^8.18.1
-    version: 8.18.1
   hexo-util:
     specifier: ^3.1.0
     version: 3.1.0
@@ -64,10 +48,6 @@ dependencies:
     version: 4.1.0
 
 packages:
-
-  /@adobe/css-tools@4.3.2:
-    resolution: {integrity: sha512-DA5a1C0gD/pLOvhv33YMrbf2FK3oUzwNl9oOJqE4XVjuEtt6XIakRcsd7eLiOSPkp1kTRQGICTA8cKra/vFbjw==}
-    dev: false
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -715,17 +695,6 @@ packages:
       is-glob: 4.0.3
     dev: false
 
-  /glob@7.2.3:
-    resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
-    dev: false
-
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
@@ -828,14 +797,6 @@ packages:
       hexo-pagination: 3.0.0
     dev: false
 
-  /hexo-generator-searchdb@1.4.1:
-    resolution: {integrity: sha512-7m8IBpZbI6iKb2jRYxs4pghD6Ln8ylQSRGl6MIC4G9wws21vYSXSD8rvC3MoCO+pWBHs6E/mTA/rjG+p2AZfVg==}
-    dependencies:
-      nunjucks: 3.2.4
-    transitivePeerDependencies:
-      - chokidar
-    dev: false
-
   /hexo-generator-sitemap@3.0.1:
     resolution: {integrity: sha512-n+0KLNmq6TLbiZPTQF6NY5MbEem/O+DFx0lgQZNQcU4tdjXIZRrQJs+KRKeT66NTkdlYTqb4WwCxswLqQz0crA==}
     engines: {node: '>=12.13.0'}
@@ -912,16 +873,6 @@ packages:
       - utf-8-validate
     dev: false
 
-  /hexo-renderer-stylus@3.0.0:
-    resolution: {integrity: sha512-wgKOcjUzq1i4Y70luoyYDbh91QeQcDzJO+v1598LgY+IdREFAm+vy1MWtl/TZsVXyPaEtsULNi3Vi22hdsPUSA==}
-    engines: {node: '>=14'}
-    dependencies:
-      nib: 1.2.0(stylus@0.59.0)
-      stylus: 0.59.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /hexo-server@3.0.0:
     resolution: {integrity: sha512-u4s0ty9Aew6jV+a9oMrXBwhrRpUQ0U8PWM/88a5aHgDru58VY81mVrxOFxs788NAsWQ8OvsJtF5m7mnXoRnSIA==}
     engines: {node: '>=12.13.0'}
@@ -936,14 +887,6 @@ packages:
       serve-static: 1.15.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /hexo-theme-landscape@1.0.0:
-    resolution: {integrity: sha512-bWQJWMqQI78wWiJPQZq5pJBH20TM442ShCaHGRetuEgMraxH0OKxB3NTupJzNEkzEk8DV2yrdizkXdKN6i501A==}
-    dev: false
-
-  /hexo-theme-next@8.18.1:
-    resolution: {integrity: sha512-cfj4FKXJZjFmWQ5hX1yQHYCu+qzRce/hxw3403jCCnQHkfcTSoT0I7OJCWktCydJ2p43JSKiOpL5n6N4yRggZw==}
     dev: false
 
   /hexo-util@2.7.0:
@@ -1412,14 +1355,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /nib@1.2.0(stylus@0.59.0):
-    resolution: {integrity: sha512-7HgrnMl/3yOmWykueO8/D0q+0iWwe7Z+CK2Eaq/xQV8w1hK80WN1oReRQkfkrztbAAnp/nTHkUSl5EcVkor6JQ==}
-    peerDependencies:
-      stylus: '*'
-    dependencies:
-      stylus: 0.59.0
-    dev: false
-
   /no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
@@ -1518,11 +1453,6 @@ packages:
     dependencies:
       no-case: 3.0.4
       tslib: 2.4.1
-    dev: false
-
-  /path-is-absolute@1.0.1:
-    resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
-    engines: {node: '>=0.10.0'}
     dev: false
 
   /path-key@3.1.1:
@@ -1664,6 +1594,7 @@ packages:
   /sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
     dev: false
+    optional: true
 
   /saxes@6.0.0:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
@@ -1741,11 +1672,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /source-map@0.7.4:
-    resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
-    engines: {node: '>= 8'}
-    dev: false
-
   /sprintf-js@1.1.2:
     resolution: {integrity: sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==}
     dev: false
@@ -1791,19 +1717,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       min-indent: 1.0.1
-    dev: false
-
-  /stylus@0.59.0:
-    resolution: {integrity: sha512-lQ9w/XIOH5ZHVNuNbWW8D822r+/wBSO/d6XvtyHLF7LW4KaCIDeVbvn5DF8fGCJAUCwVhVi/h6J0NUcnylUEjg==}
-    hasBin: true
-    dependencies:
-      '@adobe/css-tools': 4.3.2
-      debug: 4.3.4
-      glob: 7.2.3
-      sax: 1.2.4
-      source-map: 0.7.4
-    transitivePeerDependencies:
-      - supports-color
     dev: false
 
   /supports-color@7.2.0:
@@ -2014,3 +1927,7 @@ packages:
       compress-commons: 5.0.1
       readable-stream: 3.6.0
     dev: false
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
