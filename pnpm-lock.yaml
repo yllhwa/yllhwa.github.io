@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   archiver:
     specifier: ^6.0.1
@@ -8,8 +12,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   hexo:
-    specifier: ^7.0.0
-    version: 7.0.0
+    specifier: ^7.1.0
+    version: 7.1.0
   hexo-generator-archive:
     specifier: ^2.0.0
     version: 2.0.0
@@ -917,8 +921,8 @@ packages:
       strip-indent: 3.0.0
     dev: false
 
-  /hexo@7.0.0:
-    resolution: {integrity: sha512-3iRSYReDcYd+bdCrDYS53aFjR717M+eSwKVXdM1tF2QETi8urcwDdDDoD7Nm2E0trqN4oeoHJ7FoXbn2UsZxqw==}
+  /hexo@7.1.0:
+    resolution: {integrity: sha512-FFjo8NwqSQVxASSKFGkFUak720sFC/p3IxkDIOHLXQ1axQ5w4ipFU0DNqDzwyb5EJOMFYuMxFcurhm9olQP13A==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -1593,6 +1597,7 @@ packages:
 
   /sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -1927,7 +1932,3 @@ packages:
       compress-commons: 5.0.1
       readable-stream: 3.6.0
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
