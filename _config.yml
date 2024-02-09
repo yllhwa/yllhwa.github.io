@@ -128,3 +128,8 @@ feed:
   icon: icon.png
   autodiscovery: true
   template:
+
+hide_posts:
+  enable: true
+  filter: hidden
+  noindex: true

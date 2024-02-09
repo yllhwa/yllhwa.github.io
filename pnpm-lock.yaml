@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   archiver:
     specifier: ^6.0.1
@@ -28,6 +32,9 @@ dependencies:
   hexo-generator-tag:
     specifier: ^2.0.0
     version: 2.0.0
+  hexo-hide-posts:
+    specifier: ^0.4.0
+    version: 0.4.0
   hexo-renderer-ejs:
     specifier: ^2.0.0
     version: 2.0.0
@@ -815,6 +822,12 @@ packages:
       hexo-pagination: 3.0.0
     dev: false
 
+  /hexo-hide-posts@0.4.0:
+    resolution: {integrity: sha512-qSdCoNG2FRxX/7TKJHPINOK/KbfaqqMgT1LHNAYPN1P0MgL187b0A6sCduevoIMlN0i/xK0yNlS/UDRQwVdZGw==}
+    dependencies:
+      chalk: 4.1.2
+    dev: false
+
   /hexo-i18n@2.0.0:
     resolution: {integrity: sha512-dkUXecEtChaQMdTHN4WR13c8GwKqjbSOZPJS9qDqV6Ebnb77Wa/nQzWFckhP0dCps3a9lUQBd8hYGOMbOosiQQ==}
     engines: {node: '>=14'}
@@ -1593,6 +1606,7 @@ packages:
 
   /sax@1.2.4:
     resolution: {integrity: sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -1927,7 +1941,3 @@ packages:
       compress-commons: 5.0.1
       readable-stream: 3.6.0
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
