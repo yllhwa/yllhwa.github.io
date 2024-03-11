@@ -14,7 +14,7 @@
     "version": "7.0.0"
   },
   "dependencies": {
-    "archiver": "^6.0.1",
+    "archiver": "^7.0.1",
     "css": "^3.0.0",
     "hexo": "^7.1.1",
     "hexo-generator-archive": "^2.0.0",
