@@ -12,8 +12,8 @@ dependencies:
     specifier: ^3.0.0
     version: 3.0.0
   hexo:
-    specifier: ^7.1.1
-    version: 7.1.1
+    specifier: ^7.2.0
+    version: 7.2.0
   hexo-generator-archive:
     specifier: ^2.0.0
     version: 2.0.0
@@ -67,10 +67,6 @@ packages:
 
   /abab@2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
-    dev: false
-
-  /abbrev@1.1.1:
-    resolution: {integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==}
     dev: false
 
   /abbrev@2.0.0:
@@ -729,19 +725,19 @@ packages:
       function-bind: 1.1.1
     dev: false
 
-  /hexo-cli@4.3.0:
-    resolution: {integrity: sha512-lr46h1tK1RNQJAQZbzKYAWGsmqF5DLrW6xKEakqv/o9JqgdeempBjIm7HqjcZEUBpWij4EO65X6YJiDmT9LR7g==}
-    engines: {node: '>=10.13.0'}
+  /hexo-cli@4.3.2:
+    resolution: {integrity: sha512-druJeBgLpG9ncDS5AhBHdAXk0G4CFj8Qes09pApyZ6bR+nJW1JYiDMuilhudaKDdq+1l49jWXVTidkcb7p0Jbw==}
+    engines: {node: '>=14'}
     hasBin: true
     dependencies:
-      abbrev: 1.1.1
+      abbrev: 2.0.0
       bluebird: 3.7.2
-      chalk: 4.1.2
       command-exists: 1.2.9
-      hexo-fs: 3.1.0
-      hexo-log: 2.0.0
-      hexo-util: 2.7.0
+      hexo-fs: 4.1.3
+      hexo-log: 4.1.0
+      hexo-util: 3.3.0
       minimist: 1.2.7
+      picocolors: 1.0.0
       resolve: 1.22.1
       tildify: 2.0.0
     dev: false
@@ -753,24 +749,14 @@ packages:
       js-yaml: 4.1.0
     dev: false
 
-  /hexo-fs@3.1.0:
-    resolution: {integrity: sha512-SfoDH7zlU9Iop+bAfEONXezbNIkpVX1QqjNCBYpapilZR+xVOCfTEdlNixanrKBbLGPb2fXqrdDBFgrKuiVGQQ==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      bluebird: 3.7.2
-      chokidar: 3.5.3
-      graceful-fs: 4.2.10
-      hexo-util: 2.7.0
-    dev: false
-
-  /hexo-fs@4.1.1:
-    resolution: {integrity: sha512-aDysNTyv8ElcerbFVbPLRXnYt+QDY6gAOZZ5DLbCxudY0Ywppqd+uZ03gZ2BDypIBvmNB27WYWYz76M+Yv/YXw==}
+  /hexo-fs@4.1.3:
+    resolution: {integrity: sha512-Q92zQ5PlVDouvSWFLXQoFSTLIUIODikUJs2BfAXQglyOEjN1dOQn1Z5Nimk/7GHof17R5h/uObCQLnZAjzI2tg==}
     engines: {node: '>=14'}
     dependencies:
       bluebird: 3.7.2
       chokidar: 3.5.3
       graceful-fs: 4.2.10
-      hexo-util: 2.7.0
+      hexo-util: 3.3.0
     dev: false
 
   /hexo-generator-archive@2.0.0:
@@ -833,13 +819,6 @@ packages:
     engines: {node: '>=14'}
     dependencies:
       sprintf-js: 1.1.2
-    dev: false
-
-  /hexo-log@2.0.0:
-    resolution: {integrity: sha512-U7zdDae74pXcyhQEyNmpJdq3UI6zWKxQ7/zLoMr/d3CBRdIfB5yO8DWqKUnewfibYv0gODyTWUIhxQDWuwloow==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      chalk: 4.1.2
     dev: false
 
   /hexo-log@4.1.0:
@@ -930,20 +909,34 @@ packages:
       strip-indent: 3.0.0
     dev: false
 
-  /hexo@7.1.1:
-    resolution: {integrity: sha512-u6aJXG1npYkZJLl7QEOeTdm9hOwxfsLmFp4qAQVF0OAuNaikrKORjgNsjPmrWwI/tIObwjVJnEUJnV7S+NnUlw==}
+  /hexo-util@3.3.0:
+    resolution: {integrity: sha512-YvGngXijE2muEh5L/VI4Fmjqb+/yAkmY+VuyhWVoRwQu1X7bmWodsfYRXX7CUYhi5LqsvH8FAe/yBW1+f6ZX4Q==}
+    engines: {node: '>=14'}
+    requiresBuild: true
+    dependencies:
+      camel-case: 4.1.2
+      cross-spawn: 7.0.3
+      deepmerge: 4.2.2
+      highlight.js: 11.7.0
+      htmlparser2: 9.0.0
+      prismjs: 1.29.0
+      strip-indent: 3.0.0
+    dev: false
+
+  /hexo@7.2.0:
+    resolution: {integrity: sha512-RYIzl7jfG0i2jH/k5IZg4C1anyHfmKHNUsBKIn9LU0V3iQ0WQrwuOLFDJwaZDenqmzHYJhAVCGAkrBDfF/IlVg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
       abbrev: 2.0.0
       archy: 1.0.0
       bluebird: 3.7.2
-      hexo-cli: 4.3.0
+      hexo-cli: 4.3.2
       hexo-front-matter: 4.2.1
-      hexo-fs: 4.1.1
+      hexo-fs: 4.1.3
       hexo-i18n: 2.0.0
       hexo-log: 4.1.0
-      hexo-util: 3.1.0
+      hexo-util: 3.3.0
       js-yaml: 4.1.0
       js-yaml-js-types: 1.0.1(js-yaml@4.1.0)
       micromatch: 4.0.5
@@ -958,7 +951,7 @@ packages:
       text-table: 0.2.0
       tildify: 2.0.0
       titlecase: 1.1.3
-      warehouse: 5.0.0
+      warehouse: 5.0.1
     transitivePeerDependencies:
       - chokidar
     dev: false
@@ -1855,8 +1848,8 @@ packages:
       xml-name-validator: 4.0.0
     dev: false
 
-  /warehouse@5.0.0:
-    resolution: {integrity: sha512-3NDCqIF1r83ermIM6QffsJPn9sYoNN/aohb87edraeE2NF57yjSd651f+G7tqOgg4SZuD2DgGmwekc8fTIdi2g==}
+  /warehouse@5.0.1:
+    resolution: {integrity: sha512-5BQEQP56bPY+cqocTho4syazuGgSoyKd0y3PsS2j8tGN10HH+CEfJSIY+KUw9D0k4jaVEFMXLz0KqCiUzTYb8A==}
     engines: {node: '>=14'}
     dependencies:
       bluebird: 3.7.2
