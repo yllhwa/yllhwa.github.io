@@ -96,9 +96,14 @@
 
 body {
   margin: 1.2rem;
-  font-family: "lucida grande", "lucida sans unicode", lucida, helvetica,
-    "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  background: linear-gradient(90deg, rgba(200, 200, 200, 0.25) 3%, transparent 0),
+  font-family: "LXGW WenKai Screen", "lucida grande", "lucida sans unicode",
+    lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei",
+    "WenQuanYi Micro Hei", sans-serif;
+  background: linear-gradient(
+      90deg,
+      rgba(200, 200, 200, 0.25) 3%,
+      transparent 0
+    ),
     linear-gradient(rgba(200, 200, 200, 0.25) 3%, transparent 0);
   background-size: 50px 50px;
   background-attachment: fixed;
@@ -235,4 +240,76 @@ blockquote {
 
 .comment {
   text-align: center;
+}
+
+// 表格样式
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  th {
+    background-color: #f5f5f5;
+  }
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    text-align: left;
+  }
+}
+
+// 目录相关
+
+.toc-child {
+  list-style: none;
+}
+
+.toc-block {
+  // 外边框
+  border: 1px solid #949da4;
+  // 圆角
+  border-radius: 0.5rem;
+  overflow: hidden;
+  .toc-header {
+    // 背景色
+    background-color: #f5f5f5;
+    // 字体大小
+    font-size: 1.125rem;
+    // 上下边距
+    margin: 0;
+    // 左右边距
+    padding: 0.5rem;
+  }
+
+  .toc {
+    list-style: none;
+    padding-left: 1rem;
+  }
+}
+
+// 隐藏没有.toc子元素的.toc-block
+.toc-block:not(:has(.toc)) {
+  display: none;
+}
+
+// 时间轴
+
+.post-year-2017 {
+  &::after {
+    content: "@泸县二中";
+    display: inline;
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #65727c;
+  }
+}
+
+.post-year-2021 {
+  &::after {
+    content: "@华中科技大学";
+    display: inline;
+    margin: 1rem 0;
+    font-size: 1rem;
+    color: #65727c;
+  }
 }

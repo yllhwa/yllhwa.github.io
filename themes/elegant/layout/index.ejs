@@ -17,7 +17,7 @@
     for (const year of years) { 
     %>
     <div class="post-year-info">
-        <h2 class="post-year"><%= year %></h2>
+        <h2 class="post-year post-year-<%= year %>"><%= year %></h2>
         <div class="post-count-year">共计 <%= groupedPosts[year].length %> 篇文章</div>
     </div>
     

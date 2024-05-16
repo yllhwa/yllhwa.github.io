@@ -8,6 +8,10 @@
   <p>
     <%= page.tip %>
   </p>
+  <div class="toc-block">
+    <p class="toc-header">目录</p>
+    <%- toc(page.content, {list_number: false, max_depth: 4}) %>
+  </div>
   <article class="post-content"><%- page.content %></article>
   <div class="comment">
     有疑问或评论欢迎发送邮件到 comment@yllhwa.com
