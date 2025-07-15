@@ -16,11 +16,11 @@
   "dependencies": {
     "archiver": "^7.0.1",
     "css": "^3.0.0",
-    "hexo": "^7.1.1",
+    "hexo": "^7.3.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-index": "^4.0.0",
     "hexo-generator-sitemap": "^3.0.1",
     "hexo-generator-tag": "^2.0.0",
     "hexo-hide-posts": "^0.4.3",
