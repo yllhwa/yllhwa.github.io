@@ -28,7 +28,7 @@
     "hexo-renderer-less": "^4.0.0",
     "hexo-renderer-marked": "^7.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-util": "^3.3.0",
+    "hexo-util": "^4.0.0",
     "js-yaml": "^4.1.0"
   }
 }
