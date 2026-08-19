@@ -1,0 +1,87 @@
+---
+import { formatDate } from "@/lib/utils"
+import type { CollectionEntry } from "astro:content"
+
+type Props = { post: CollectionEntry<"blog"> }
+
+const { post } = Astro.props
+---
+
+<li>
+  <a class="entry-link" href={`/blog/${post.id}/`}>
+    <entry-info>
+      <h2>{post.data.title}</h2>
+      <p>{post.data.description}</p>
+    </entry-info>
+    <entry-meta>
+      <time datetime={post.data.date.toISOString()}
+        >{formatDate(post.data.date)}</time
+      >
+      <span>{post.data.category}</span>
+    </entry-meta>
+  </a>
+</li>
+
+<style>
+  li {
+    list-style: none;
+  }
+
+  .entry-link {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: var(--space-s);
+    padding-block: var(--space-s);
+    color: inherit;
+    text-decoration: none;
+    border-block-end: 1px solid var(--border);
+
+    &:hover h2 {
+      text-decoration-color: currentColor;
+    }
+
+    entry-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3xs);
+
+      h2 {
+        font-size: var(--step-1);
+        line-height: calc(var(--leading-offset) + 1em);
+        font-weight: var(--font-weight-medium);
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-underline-offset: 0.14em;
+        transition: text-decoration-color 150ms ease;
+      }
+
+      p {
+        color: var(--muted-foreground);
+        line-height: 1.65;
+      }
+    }
+
+    entry-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-3xs);
+      padding-block-end: 0.1rem;
+      color: var(--muted-foreground);
+      font-size: var(--step--1);
+      white-space: nowrap;
+    }
+
+    @media (width < 34rem) {
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+
+      entry-meta {
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-xs);
+      }
+    }
+  }
+</style>

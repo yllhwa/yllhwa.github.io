@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content"
+import { SITE } from "@/consts"
+import { pageTitle } from "@/lib/content"
+
+type Props = {
+  post: CollectionEntry<"blog">
+  canonical?: string
+}
+
+const { post, canonical: canonicalPath } = Astro.props
+const { title, description, date, image } = post.data
+
+const base = Astro.site ?? new URL(Astro.url.origin)
+const url = new URL(Astro.url.pathname, base)
+const canonical = new URL(canonicalPath ?? Astro.url.pathname, base)
+const ogImage = image ? new URL(image.src, base) : undefined
+---
+
+<title>{pageTitle(title)}</title>
+<meta name="description" content={description}>
+<link rel="canonical" href={canonical}>
+
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="article">
+<meta property="og:url" content={url}>
+<meta property="og:site_name" content={SITE.title}>
+<meta property="og:locale" content={SITE.locale.replace("-", "_")}>
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:alt" content={title} />}
+
+<meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"}>
+<meta name="twitter:title" content={title}>
+<meta name="twitter:description" content={description}>
+{ogImage && <meta name="twitter:image" content={ogImage} />}
+{ogImage && <meta name="twitter:image:alt" content={title} />}
+<meta name="twitter:creator" content="yllhwa">
+
+<meta property="article:published_time" content={date.toISOString()}>
+<meta property="article:author" content="yllhwa">

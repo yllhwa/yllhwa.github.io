@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import MetaPage from "@/components/MetaPage.astro"
+import ProjectCard from "@/components/ProjectCard.astro"
+import PublicationCard from "@/components/PublicationCard.astro"
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+const publications = (await getCollection("publications")).sort(
+  (a, b) => a.data.order - b.data.order,
+)
+---
+
+<Layout>
+  <MetaPage slot="head" title="项目" description="科研成果与开源项目" />
+  <header class="page-heading">
+    <h1>项目</h1>
+    <p>科研成果与开源项目。</p>
+  </header>
+
+  <section aria-labelledby="publications-heading">
+    <h2 id="publications-heading">科研</h2>
+    <div class="publication-list">
+      {publications.map((publication) => <PublicationCard publication={publication} />)}
+    </div>
+  </section>
+
+  <section aria-labelledby="projects-heading">
+    <h2 id="projects-heading">开源</h2>
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-heading {
+    margin-block-end: var(--space-l);
+  }
+
+  .page-heading h1,
+  h2 {
+    margin-block-start: 0;
+  }
+
+  .page-heading p {
+    color: var(--muted-foreground);
+  }
+
+  section + section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-s);
+  }
+
+  @media (width < 38rem) {
+    .project-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

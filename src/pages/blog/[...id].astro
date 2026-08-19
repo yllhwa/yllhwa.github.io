@@ -1,0 +1,85 @@
+---
+import MetaPost from "@/components/MetaPost.astro"
+import ScrollToTop from "@/components/ScrollToTop.astro"
+import TableOfContents from "@/components/TableOfContents.astro"
+import Layout from "@/layouts/Layout.astro"
+import { getPosts } from "@/lib/content"
+import { formatDate } from "@/lib/utils"
+import { render, type CollectionEntry } from "astro:content"
+
+export async function getStaticPaths() {
+  return (await getPosts()).map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }))
+}
+
+type Props = { post: CollectionEntry<"blog"> }
+
+const { post } = Astro.props
+const { Content, headings } = await render(post)
+const tocHeadings = headings.filter(
+  ({ depth, text }) => depth >= 2 && depth <= 4 && text.trim(),
+)
+---
+
+<Layout crumbs={[{ label: post.data.title, href: `/blog/${post.id}/` }]}>
+  <MetaPost slot="head" post={post} />
+  {tocHeadings.length > 0 && (
+    <TableOfContents
+      slot="toc"
+      title="目录"
+      sections={[{ label: post.data.title, headings: tocHeadings }]}
+    />
+  )}
+  <ScrollToTop floating />
+  <article>
+    <header>
+      <h1>{post.data.title}</h1>
+      <post-meta>
+        <time datetime={post.data.date.toISOString()}
+          >{formatDate(post.data.date)}</time
+        >
+        <a href={`/blog/categories/${encodeURIComponent(post.data.category)}/`}>
+          {post.data.category}
+        </a>
+      </post-meta>
+      <p>{post.data.description}</p>
+    </header>
+    <prose-content>
+      <Content />
+    </prose-content>
+  </article>
+</Layout>
+
+<style>
+  article > header {
+    margin-block-end: var(--space-l);
+
+    h1 {
+      max-inline-size: 32ch;
+      font-size: var(--step-3);
+      line-height: 1.35;
+      font-weight: var(--font-weight-medium);
+    }
+
+    > p {
+      margin-block-start: var(--space-xs);
+      color: var(--muted-foreground);
+      line-height: 1.65;
+    }
+  }
+
+  post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-2xs);
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+
+    a {
+      color: inherit;
+    }
+  }
+</style>

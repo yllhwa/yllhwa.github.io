@@ -1,0 +1,48 @@
+---
+import type { CollectionEntry } from "astro:content"
+import BlogCard from "@/components/BlogCard.astro"
+import Layout from "@/layouts/Layout.astro"
+import MetaPage from "@/components/MetaPage.astro"
+import { getCategories } from "@/lib/content"
+
+export async function getStaticPaths() {
+  return [...(await getCategories())].map(([category, posts]) => ({
+    params: { category },
+    props: { category, posts },
+  }))
+}
+
+type Props = { category: string; posts: CollectionEntry<"blog">[] }
+const { category, posts } = Astro.props
+---
+
+<Layout>
+  <MetaPage
+    slot="head"
+    title={category}
+    description={`${category}分类下的文章`}
+  />
+  <header>
+    <h1>{category}</h1>
+    <a href="/blog/categories/">所有分类</a>
+  </header>
+  <ul>
+    {posts.map((post) => <BlogCard post={post} />)}
+  </ul>
+</Layout>
+
+<style>
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-block-end: var(--space-m);
+  }
+  h1 {
+    margin: 0;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

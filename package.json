@@ -1,34 +1,48 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "yllhwa-blog",
+  "type": "module",
+  "version": "2.0.0",
   "private": true,
-  "scripts": {
-    "build": "hexo generate",
-    "dev": "hexo server",
-    "clean": "hexo clean",
-    "deploy": "hexo deploy",
-    "server": "hexo server",
-    "pack": "node pack-public.js"
+  "packageManager": "pnpm@11.19.0",
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "hexo": {
-    "version": "7.3.0"
+  "scripts": {
+    "dev": "astro dev",
+    "check": "astro check",
+    "build": "pnpm check && astro build",
+    "deploy": "pnpm build && node scripts/deploy.mjs",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "biome format --write .",
+    "format:check": "biome format ."
   },
   "dependencies": {
-    "archiver": "^7.0.1",
-    "css": "^3.0.0",
-    "hexo": "^7.3.0",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^4.0.0",
-    "hexo-generator-sitemap": "^3.0.1",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-hide-posts": "^0.4.3",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-less": "^4.0.0",
-    "hexo-renderer-marked": "^7.0.1",
-    "hexo-server": "^3.0.0",
-    "hexo-util": "^3.3.0",
-    "js-yaml": "^4.1.0"
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/lucide": "^1.2.83",
+    "@iconify-json/octicon": "^1.2.20",
+    "@astrojs/markdown-satteri": "^0.3.2",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@expressive-code/plugin-collapsible-sections": "^0.42.0",
+    "@expressive-code/plugin-line-numbers": "^0.42.0",
+    "astro": "^7.0.2",
+    "astro-icon": "^1.2.0",
+    "github-slugger": "^2.0.0",
+    "hast-util-select": "^6.0.4",
+    "hast-util-to-html": "^9.0.5",
+    "hastscript": "^9.0.1",
+    "mdast-util-to-hast": "^13.2.1",
+    "satteri": "^0.9.5",
+    "satteri-expressive-code": "^0.1.15",
+    "sharp": "^0.35.3",
+    "temml": "^0.13.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@biomejs/biome": "^2.5.1",
+    "@types/hast": "^3.0.5",
+    "@types/mdast": "^4.0.4",
+    "typescript": "^6.0.3"
   }
 }

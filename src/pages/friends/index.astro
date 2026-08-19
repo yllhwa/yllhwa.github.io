@@ -1,0 +1,112 @@
+---
+import { Icon } from "astro-icon/components"
+import Layout from "@/layouts/Layout.astro"
+import MetaPage from "@/components/MetaPage.astro"
+
+const friends = [
+  {
+    name: "滑翔闪",
+    href: "https://blog.huaxiangshan.com/",
+    description: "高中同学，经济学爱好者",
+  },
+  {
+    name: "LY",
+    href: "https://young-lord.github.io/",
+    description: "young-lord.github.io",
+  },
+  {
+    name: "Flyan Lu",
+    href: "https://fanlumaster.github.io/",
+    description: "华科学长",
+  },
+  {
+    name: "baozongwi",
+    href: "https://baozongwi.xyz/",
+    description: "SU 战队队长",
+  },
+]
+---
+
+<Layout>
+  <MetaPage slot="head" title="友链" description="朋友们的个人网站" />
+  <header class="page-heading">
+    <h1>友链</h1>
+    <p>
+      交换友链请发送邮件至
+      <a href="mailto:friends@yllhwa.com">friends@yllhwa.com</a>。
+    </p>
+  </header>
+  <ul>
+    {friends.map((friend) => (
+      <li>
+        <a href={friend.href}>
+          <span><strong>{friend.name}</strong><small>{friend.description}</small></span>
+          <Icon name="octicon:link-external-16" aria-hidden="true" />
+        </a>
+      </li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  .page-heading {
+    margin-block-end: var(--space-l);
+  }
+
+  .page-heading h1 {
+    margin-block-start: 0;
+  }
+
+  .page-heading p {
+    color: var(--muted-foreground);
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-s);
+  }
+
+  li {
+    list-style: none;
+  }
+
+  li > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-s);
+    min-block-size: 5.5rem;
+    padding: var(--space-s);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+  }
+
+  li > a:hover {
+    background: var(--gray-2);
+  }
+
+  li span {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  small {
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+  }
+
+  li :global(svg) {
+    inline-size: 1rem;
+    flex: 0 0 auto;
+  }
+
+  @media (width < 38rem) {
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import MetaPage from "@/components/MetaPage.astro"
+import { getCategories } from "@/lib/content"
+
+const categories = await getCategories()
+---
+
+<Layout>
+  <MetaPage slot="head" title="分类" description="文章分类" />
+  <h1>分类</h1>
+  <ul>
+    {[...categories].map(([category, posts]) => (
+      <li><a href={`/blog/categories/${category}/`}><span>{category}</span><small>{posts.length} 篇</small></a></li>
+    ))}
+  </ul>
+</Layout>
+
+<style>
+  h1 {
+    margin-block-start: 0;
+  }
+  li {
+    list-style: none;
+  }
+  li a {
+    display: flex;
+    justify-content: space-between;
+    padding-block: var(--space-xs);
+    border-block-end: 1px solid var(--border);
+    text-decoration: none;
+  }
+  small {
+    color: var(--muted-foreground);
+  }
+</style>

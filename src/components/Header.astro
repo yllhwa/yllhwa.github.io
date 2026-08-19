@@ -1,0 +1,91 @@
+---
+import ThemeToggle from "@/components/ThemeToggle.astro"
+import { NAVIGATION, SITE } from "@/consts"
+import { normalizePath } from "@/lib/utils"
+
+const pathname = normalizePath(Astro.url.pathname) || "/"
+const isCurrent = (href: string) =>
+  href === "/"
+    ? pathname === "/" || pathname.startsWith("/blog/")
+    : pathname === normalizePath(href) ||
+      pathname.startsWith(normalizePath(href) + "/")
+---
+
+<header>
+  <header-inner>
+    <a class="brand" href="/" aria-label={`${SITE.title} 首页`}>~/yllhwa_</a>
+    <nav aria-label="主导航">
+      {NAVIGATION.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <ThemeToggle />
+  </header-inner>
+</header>
+
+<style>
+  header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 20;
+    border-block-end: 1px solid
+      color-mix(in oklab, var(--border) 72%, transparent);
+    background: color-mix(in oklab, var(--background) 88%, transparent);
+    backdrop-filter: blur(0.8rem);
+  }
+
+  header-inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    inline-size: min(100% - 2 * var(--page-gutter), var(--page-width));
+    min-block-size: var(--header-height);
+    margin-inline: auto;
+  }
+
+  .brand {
+    flex-shrink: 0;
+    color: var(--foreground);
+    font-family: var(--font-mono);
+    font-size: var(--step-0);
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(0.75rem, 2.4vw, 1.35rem);
+    margin-inline-start: auto;
+  }
+
+  nav a {
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--foreground);
+  }
+
+  @media (width < 34rem) {
+    header-inner {
+      gap: var(--space-2xs);
+    }
+
+    nav {
+      gap: var(--space-xs);
+    }
+
+    .brand {
+      max-inline-size: 2.2rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import "@/styles/reset.css"
+import "@/styles/fonts.css"
+import "@/styles/color.css"
+import "@/styles/typography.css"
+import "@/styles/typography-headings.css"
+import "@/styles/typography-inline.css"
+import "@/styles/typography-lists.css"
+import "@/styles/typography-block.css"
+import "@/styles/typography-tables.css"
+import "@/styles/typography-math.css"
+import "@/styles/callout.css"
+import "@/styles/layout.css"
+import "@/styles/icon-button.css"
+import "@/styles/bar.css"
+import "@/styles/shape.css"
+
+import Footer from "@/components/Footer.astro"
+import Header from "@/components/Header.astro"
+import MetaHead from "@/components/MetaHead.astro"
+import { SITE } from "@/consts"
+
+type Props = { crumbs?: { label: string; href: string }[] }
+---
+
+<html lang={SITE.locale} dir={SITE.dir}>
+  <MetaHead>
+    <slot name="head" />
+  </MetaHead>
+  <body>
+    <Header />
+    <page-shell class:list={{ "has-toc": Astro.slots.has("toc") }}>
+      <main><slot /></main>
+      {Astro.slots.has("toc") && <page-toc><slot name="toc" /></page-toc>}
+    </page-shell>
+    <page-footer><Footer /></page-footer>
+  </body>
+</html>
+
+<style>
+  page-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    inline-size: min(100% - 2 * var(--page-gutter), var(--page-width));
+    min-block-size: calc(100svh - var(--header-height) - 8rem);
+    margin-inline: auto;
+    padding-block-start: var(--space-l-xl);
+  }
+
+  main {
+    min-inline-size: 0;
+  }
+
+  page-shell.has-toc {
+    max-inline-size: var(--layout-width);
+  }
+
+  page-toc {
+    display: none;
+  }
+
+  @media (width >= 68rem) {
+    page-shell.has-toc {
+      grid-template-columns: minmax(0, var(--page-width)) minmax(12rem, 16rem);
+      gap: var(--space-xl);
+    }
+
+    page-toc {
+      display: block;
+      position: sticky;
+      inset-block-start: calc(var(--header-height) + var(--space-l));
+      align-self: start;
+      max-block-size: calc(100svh - var(--header-height) - 2 * var(--space-l));
+      overflow: auto;
+    }
+  }
+
+  page-footer {
+    display: block;
+    inline-size: min(100% - 2 * var(--page-gutter), var(--page-width));
+    margin-inline: auto;
+    margin-block-start: var(--space-xl);
+  }
+</style>

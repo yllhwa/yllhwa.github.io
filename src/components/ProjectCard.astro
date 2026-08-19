@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components"
+import type { CollectionEntry } from "astro:content"
+
+type Props = { project: CollectionEntry<"projects"> }
+const { project } = Astro.props
+const { name, description, repository, website, language, icon, stars, forks } =
+  project.data
+---
+
+<article>
+  <div class="title-row">
+    {icon ? <Icon name={icon} aria-hidden="true" /> : <Icon name="octicon:repo-16" aria-hidden="true" />}
+    <h3><a href={repository}>{name}</a></h3>
+  </div>
+  <p>{description}</p>
+  <footer>
+    {language && <span>{language}</span>}
+    {typeof stars === "number" && (
+      <span title="GitHub Stars"><Icon name="octicon:star-16" aria-hidden="true" /> {stars}</span>
+    )}
+    {typeof forks === "number" && (
+      <span title="GitHub Forks"><Icon name="octicon:repo-forked-16" aria-hidden="true" /> {forks}</span>
+    )}
+    {website && (
+      <a href={website}>网站 <Icon name="octicon:link-external-16" aria-hidden="true" /></a>
+    )}
+  </footer>
+</article>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    min-block-size: 11rem;
+    padding: var(--space-s);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: color-mix(in oklab, var(--gray-2) 72%, transparent);
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+  }
+
+  .title-row > :global(svg) {
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+    flex: 0 0 auto;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--step-0);
+  }
+
+  h3 a {
+    color: var(--foreground);
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    text-decoration: underline;
+  }
+
+  p {
+    margin-block: var(--space-xs);
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    line-height: 1.65;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-start: auto;
+    color: var(--muted-foreground);
+    font-size: var(--step--2);
+  }
+
+  footer span,
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  footer :global(svg) {
+    inline-size: 0.9rem;
+    block-size: 0.9rem;
+  }
+</style>

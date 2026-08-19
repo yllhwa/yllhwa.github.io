@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components"
+
+type Props = { links: readonly { href: string; label: string; icon: string }[] }
+
+const { links } = Astro.props
+---
+
+<ul>
+  {links.map(({ href, label, icon }) => (
+      <li>
+        <a
+          href={href}
+          data-icon-button
+          target={href.startsWith("http") ? "_blank" : undefined}
+          rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+          aria-label={label}
+          title={label}
+        >
+          <Icon name={icon} aria-hidden="true" />
+        </a>
+      </li>
+    ))}
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    margin-inline: -0.5rem;
+
+    li a {
+      color: var(--muted-foreground);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--foreground);
+      }
+
+      svg {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
+  }
+</style>

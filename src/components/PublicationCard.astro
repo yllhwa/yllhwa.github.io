@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+type Props = { publication: CollectionEntry<"publications"> }
+const { publication } = Astro.props
+const { title, authors, venue, year, note, doi, arxiv, paper, code } =
+  publication.data
+---
+
+<article>
+  <h3>{title}</h3>
+  <p class="authors">{authors.join(", ")}</p>
+  {(venue || note) && <p class="venue">{venue}{venue && note ? " · " : ""}{note}</p>}
+  <footer>
+    <span>{year}</span>
+    {doi && <a href={doi}><img src="/icons/doi.svg" alt="" /> DOI</a>}
+    {arxiv && <a href={arxiv}><img src="/icons/arxiv.svg" alt="" /> arXiv</a>}
+    {paper && <a href={paper}>论文</a>}
+    {code && <a href={code}>代码</a>}
+  </footer>
+</article>
+
+<style>
+  article {
+    padding-block: var(--space-s);
+    border-block-end: 1px solid var(--border);
+  }
+
+  article:first-child {
+    padding-block-start: 0;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--step-0);
+    line-height: 1.45;
+  }
+
+  p {
+    margin-block: var(--space-2xs) 0;
+  }
+
+  .authors,
+  .venue {
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    line-height: 1.6;
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-xs);
+    font-size: var(--step--2);
+  }
+
+  footer a,
+  footer span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  footer img {
+    inline-size: 1rem;
+    block-size: 1rem;
+    object-fit: contain;
+  }
+</style>

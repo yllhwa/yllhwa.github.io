@@ -1,0 +1,260 @@
+---
+import { Image } from "astro:assets"
+import { Icon } from "astro-icon/components"
+import Layout from "@/layouts/Layout.astro"
+import MetaPage from "@/components/MetaPage.astro"
+import ida from "@/assets/about/ida.png"
+import x64dbg from "@/assets/about/x64dbg.png"
+import frida from "@/assets/about/frida.png"
+import magisk from "@/assets/about/magisk.png"
+import crac from "@/assets/about/crac.png"
+import l3hsec from "@/assets/about/l3hsec.png"
+
+const skillGroups = [
+  {
+    label: "后端",
+    skills: [
+      ["Go", "logos:go"],
+      ["Python", "logos:python"],
+      ["Java", "logos:java"],
+      ["Redis", "logos:redis"],
+      ["PostgreSQL", "logos:postgresql"],
+      ["Nginx", "logos:nginx"],
+      ["Docker", "logos:docker-icon"],
+    ],
+  },
+  {
+    label: "前端",
+    skills: [
+      ["TypeScript", "logos:typescript-icon"],
+      ["Vue", "logos:vue"],
+      ["Vite", "logos:vitejs"],
+      ["UnoCSS", "logos:unocss"],
+    ],
+  },
+  {
+    label: "客户端",
+    skills: [
+      ["Tauri", "logos:tauri"],
+      ["Flutter", "logos:flutter"],
+    ],
+  },
+  {
+    label: "网络安全",
+    skills: [
+      ["IDA", ida],
+      ["x64dbg", x64dbg],
+      ["Xposed", "/icons/xposed.svg"],
+      ["Frida", frida],
+      ["Magisk", magisk],
+    ],
+  },
+  {
+    label: "环境",
+    skills: [
+      ["Windows", "logos:microsoft-windows-icon"],
+      ["VS Code", "logos:visual-studio-code"],
+      ["Git", "logos:git-icon"],
+    ],
+  },
+] as const
+---
+
+<Layout>
+  <MetaPage slot="head" title="关于" description="关于 yllhwa" />
+  <h1>关于</h1>
+
+  <section aria-labelledby="skills-heading">
+    <h2 id="skills-heading">技术栈</h2>
+    <div class="skill-groups">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3>{group.label}</h3>
+          <ul class="skill-list">
+            {group.skills.map(([name, asset]) => (
+              <li>
+                {typeof asset === "string"
+                  ? asset.startsWith("/")
+                    ? <img src={asset} alt="" />
+                    : <Icon name={asset} aria-hidden="true" />
+                  : <Image src={asset} alt="" width={22} height={22} />}
+                <span>{name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="education-heading">
+    <h2 id="education-heading">教育</h2>
+    <ul class="detail-list">
+      <li>
+        <img src="/icons/hust.svg" alt="">
+        <span
+          ><strong>华中科技大学</strong
+          ><small>网络与信息安全 · 硕士（2024 - 至今）</small></span
+        >
+      </li>
+      <li>
+        <img src="/icons/hust.svg" alt="">
+        <span
+          ><strong>华中科技大学</strong
+          ><small>网络空间安全 · 本科（2020 - 2024）</small></span
+        >
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="other-heading">
+    <h2 id="other-heading">其他</h2>
+    <ul class="detail-list">
+      <li>
+        <Image src={crac} alt="" width={26} height={26} />
+        <span><strong>业余无线电</strong><small>BH6RKZ</small></span>
+      </li>
+      <li>
+        <Image src={l3hsec} alt="" width={26} height={26} />
+        <span
+          ><strong>CTF</strong><small>L3HSec 队长（2025 - 至今）</small></span
+        >
+      </li>
+      <li>
+        <Icon name="logos:github-icon" aria-hidden="true" />
+        <span
+          ><strong>开源</strong
+          ><small
+            ><a href="https://github.com/yllhwa">github.com/yllhwa</a></small
+          ></span
+        >
+      </li>
+      <li>
+        <Icon name="logos:steam" aria-hidden="true" />
+        <span
+          ><strong>游戏</strong
+          ><small
+            ><a href="https://steamcommunity.com/profiles/76561199077371859/"
+              >Steam</a
+            ></small
+          ></span
+        >
+      </li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="bgp-heading">
+    <h2 id="bgp-heading">BGP</h2>
+    <p class="links">
+      <a href="https://bgp.tools/as214899">bgp.tools</a><span>·</span
+      ><a href="https://bgp.he.net/AS214899">Hurricane Electric</a><span>·</span
+      ><a href="https://www.peeringdb.com/asn/214899">PeeringDB</a>
+    </p>
+    <img
+      class="topology"
+      src="https://bgp.tools/pathimg/rt-2a0f:1cc5:900::_40"
+      alt="AS214899 BGP 拓扑图"
+      loading="lazy"
+      decoding="async"
+    >
+  </section>
+
+  <section aria-labelledby="contact-heading">
+    <h2 id="contact-heading">联系</h2>
+    <p><a href="mailto:yllhwa@yllhwa.com">yllhwa@yllhwa.com</a></p>
+  </section>
+</Layout>
+
+<style>
+  h1 {
+    margin-block-start: 0;
+  }
+
+  section {
+    margin-block-start: var(--space-xl);
+  }
+
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .skill-group h3 {
+    margin-block: 0 var(--space-xs);
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .skill-list li {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: var(--step--1);
+    list-style: none;
+  }
+
+  .skill-list :global(svg),
+  .skill-list :global(img) {
+    inline-size: 1.15rem;
+    block-size: 1.15rem;
+    object-fit: contain;
+  }
+
+  .detail-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .detail-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    padding-block: var(--space-xs);
+    border-block-end: 1px solid var(--border);
+    list-style: none;
+  }
+
+  .detail-list :global(svg),
+  .detail-list :global(img) {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    flex: 0 0 auto;
+    object-fit: contain;
+  }
+
+  .detail-list span {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .detail-list small {
+    color: var(--muted-foreground);
+    font-size: var(--step--1);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+  }
+
+  .topology {
+    max-inline-size: 100%;
+    margin-block-start: var(--space-s);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: white;
+  }
+</style>
